@@ -1,49 +1,57 @@
-
 <!--Тут пишется разметка-->
 <template>
-  <div class="app">
-    <post-form @create="createPost"/>
-    <post-list :posts="posts" />
-  </div>
+    <div>
+        <main-header />
+        <div class="pages">
+            <router-view></router-view>
+        </div>
+    </div>
 </template>
 
 <!--Тут пишется JS-->
 <!--Отсюда экспортируется компонент-->
 <script>
-import PostForm from "@/components/PostForm";
-import PostList from "@/components/PostList.vue";
+import MainHeader from '@/components/layout/Header/index.vue';
+
 export default {
-  components: {
-    PostList,
-    PostForm
-  },
-  data() {
-    return {
-      posts: [
-        {id: 1, title: 'JavaScript', body: 'Javascript - это язык программирования'},
-        {id: 2, title: 'Vue', body: 'Vue - это фреймворк'},
-        {id: 3, title: 'React', body: 'React - это фреймворк'}
-      ]
-    }
-  },
-  methods: {
-    createPost(post) {
-      this.posts.push(post);
-    }
-  }
-}
+    components: { MainHeader }
+};
 </script>
 
 <!--Тут описываются стили-->
 <!--scoped показывает, что эти стили применяются только к данному компоненту-->
 <style>
-  * {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
-  .app {
+p,
+h4,
+h3,
+h2,
+h1 {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    --header-height: 90px;
+}
+
+* {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pages {
     padding: 20px;
-  }
+}
 </style>
